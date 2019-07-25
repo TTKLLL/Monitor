@@ -1,0 +1,354 @@
+﻿body {
+    background-color: white;
+    font-family: Arial,Verdana,微软雅黑;
+    margin: 0;
+    border: 0;
+    width: 100%;
+    padding: 0;
+    overflow-x: auto;
+    min-width: 1024px;
+}
+
+#radioList td {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+a, a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: red;
+        text-decoration: underline;
+    }
+
+#gv_StuGroupInfo th, #gv_StuGroupInfo td {
+    text-align: left;
+    font-weight: 500;
+}
+
+    #gv_StuGroupInfo th.first, #gv_StuGroupInfo td.first {
+        width: 5%;
+    }
+
+    #gv_StuGroupInfo th.last, #gv_StuGroupInfo td.last {
+        width: auto;
+    }
+
+.multiLine {
+    width: 410px;
+    height: 80px;
+    overflow: auto;
+}
+
+.ContextMenuPanel {
+    border: 1px solid #868686;
+    z-index: 1000;
+    background: url(images/menu-bg.gif) repeat-y 0 0 #FAFAFA;
+    cursor: default;
+    padding: 1px 1px 0px 1px;
+    font-size: 11px;
+}
+
+a.ContextMenuItem {
+    margin: 1px 0 1px 0;
+    display: block;
+    color: #003399;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px 19px 4px 33px;
+    white-space: nowrap;
+}
+
+a.ContextMenuItem-Selected {
+    font-weight: bold;
+}
+
+a.ContextMenuItem:hover {
+    background-color: #FFE6A0;
+    color: #003399;
+    border: 1px solid #D2B47A;
+    padding: 3px 18px 3px 32px;
+}
+
+.textareaClass {
+    overflow: auto;
+}
+
+hr {
+    height: 1px;
+    width: auto;
+    color: white;
+    background-color: white;
+}
+
+#head, #body, #bottom {
+    background-color: white;
+}
+
+#head {
+    border: 0;
+    margin: 0;
+    overflow: hidden;
+    background-image: url('../image/treetopbg.jpg');
+    background-repeat: repeat-x;
+    padding: 5px 0 5px 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+span.h1 {
+    display: inline;
+    position: relative;
+    color: #003366;
+    border: 0;
+    margin: 0;
+    font-size: 14px;
+    margin-left: 5px;
+    width: 100%;
+}
+
+span.h2 {
+    background-color: #498dbd;
+    color: white;
+    border: 0;
+    font-size: 12px;
+    height: 15px;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    width: 70px;
+    text-align: center;
+}
+
+span.h2_Six {
+    background-color: #498dbd;
+    color: white;
+    border: 0;
+    font-size: 12px;
+    padding: 5px 0 5px 0;
+    position: absolute;
+    top: 0;
+    width: 80px;
+    text-align: center;
+    height: 15px;
+}
+
+span.h2_Eight {
+    background-color: #498dbd;
+    color: white;
+    border: 0;
+    font-size: 12px;
+    padding: 5px 2px 5px 2px;
+    position: absolute;
+    top: 0;
+    width: 90px;
+    text-align: center;
+    height: 15px;
+}
+
+span.h2_Ten {
+    background-color: #498dbd;
+    color: white;
+    border: 0;
+    font-size: 12px;
+    padding: 5px 2px 5px 2px;
+    position: absolute;
+    top: 0;
+    width: 200px;
+    text-align: center;
+    height: 15px;
+}
+
+div.noItem {
+    background-color: #e8f4ff;
+    text-align: left;
+    padding: 5px 0 5px 20px;
+    font-size: 13px;
+    font-family: Arial;
+    position: relative;
+    width: auto;
+}
+
+div.tab1 {
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    border-color: #93bee2;
+    height: 26px;
+    width: auto;
+    padding: 0px;
+    position: relative;
+    margin-top: 5px;
+    /*margin-bottom:1px;*/
+}
+
+    div.tab1 .tab1_right {
+        position: absolute;
+        top: 2px;
+        right: 15px;
+    }
+
+        div.tab1 .tab1_right a, div.tab1 .tab1_right a:visited {
+            font-size: 14px;
+            font-family: Arial;
+            text-decoration: none;
+        }
+
+            div.tab1 .tab1_right a:hover {
+                font-size: 14px;
+                font-family: Arial;
+                text-decoration: underline;
+            }
+
+div.tab2 {
+    position: relative;
+    height: auto;
+    margin-bottom: 5px;
+    width: auto;
+}
+
+/*红色按钮样式*/
+.redButtonCss {
+    font-family: "Tahoma", "宋体";
+    FONT-SIZE: 9pt;
+    color: #0066cc;
+    border: 1px solid #93bee2;
+    background-image: url('../Image/redbuttonbg.gif');
+    background-color: #ffffff;
+    CURSOR: pointer;
+    font-style: normal;
+    margin-left: 6px;
+    min-width:80px;
+}
+/*绿色按钮样式*/
+.greenButtonCss {
+    FONT-SIZE: 9pt;
+    color: #0066cc;
+    border: 1px solid #93bee2;
+    background-image: url('../Image/greenbuttonbg.gif');
+    background-color: #ffffff;
+    CURSOR: pointer;
+    font-style: normal;
+    min-width:80px;
+}
+
+/*Table样式*/
+.myTable {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-width: 0px 0px 1px 1px;
+    border-style: solid;
+    border-color: #93bee2;
+    font-family: Arial,Verdana,微软雅黑;
+    font-size: 13px;
+}
+
+    .myTable td {
+        border-width: 1px 1px 0px 0px;
+        border-style: solid;
+        border-color: #93bee2;
+        height: 20px;
+        padding: 5px;
+    }
+
+        .myTable td.left_White {
+            background-color: white;
+            text-align: right;
+            width: 30%;
+        }
+
+        .myTable td.right_White {
+            background-color: white;
+            text-align: left;
+            width: 70%;
+        }
+
+        .myTable td.left_Green {
+            background-color: #e8f4ff;
+            text-align: right;
+            width: 30%;
+        }
+
+        .myTable td.right_Green {
+            background-color: #e8f4ff;
+            text-align: left;
+            width: 70%;
+        }
+
+/*两块Table样式*/
+.myTable2 {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-width: 0px 0px 1px 1px;
+    border-style: solid;
+    border-color: #93bee2;
+    font-family: Arial,Verdana,微软雅黑;
+    font-size: 13px;
+}
+
+    .myTable2 td {
+        border-width: 1px 1px 0px 0px;
+        border-style: solid;
+        border-color: #93bee2;
+        height: 20px;
+        padding: 5px;
+    }
+
+        .myTable2 td.left_White {
+            background-color: white;
+            text-align: right;
+            width: 15%;
+        }
+
+        .myTable2 td.right_White {
+            background-color: white;
+            text-align: left;
+            width: 35%;
+        }
+
+        .myTable2 td.left_Green {
+            background-color: #e8f4ff;
+            text-align: right;
+            width: 15%;
+        }
+
+        .myTable2 td.right_Green {
+            background-color: #e8f4ff;
+            text-align: left;
+            width: 35%;
+        }
+
+.wsbTable {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-width: 0px 0px 1px 1px;
+    border-style: solid;
+    border-color: #93bee2;
+    font-family: Arial,Verdana,微软雅黑;
+    font-size: 13px;
+}
+
+    .wsbTable td {
+        border-width: 1px 1px 0px 0px;
+        border-style: solid;
+        border-color: #93bee2;
+    }
+
+.redText {
+    color:red;
+}
+
+.blueText {
+    color:#3399ff;
+}
+

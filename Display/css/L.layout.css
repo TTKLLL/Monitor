@@ -1,0 +1,175 @@
+﻿body {
+    font-family: "Tahoma", "宋体";
+    font-size: 9pt;
+    color: #003366;
+    overflow: auto;
+}
+
+.td {
+    font-family: "Tahoma", "宋体";
+    font-size: 9pt;
+}
+
+font {
+    font-family: "Tahoma", "宋体";
+    font-size: 9pt;
+}
+
+.GbText {
+    font-size: 9pt;
+}
+
+.BGbText {
+    FONT-SIZE: 9pt;
+    font: oblique;
+}
+
+.Newbutton {
+    FONT-SIZE: 9pt;
+    color: White;
+    font-family: "Tahoma","宋体";
+}
+
+.InputCss {
+    FONT-SIZE: 9pt;
+    color: #003399;
+    font-family: "宋体";
+    font-style: normal;
+    border: 1px #93BEE2 solid;
+    margin-left: 5px;
+    margin-right: 0px;
+    width: 397px;
+    height: 16px;
+}
+
+.SelectCss {
+    FONT-SIZE: 9pt;
+    color: #003399;
+    font-family: "宋体";
+    font-style: normal;
+    border: 1px #93BEE2 solid;
+    margin-left: 5px;
+    margin-right: 0px;
+    width: 200px;
+    height: 16px;
+}
+
+.Header {
+    font-size: 9pt;
+    background-image: url('../image/treetopbg.jpg');
+    height: 30px;
+}
+
+.Labelf {
+    height: 24px;
+    width: 90px;
+    background-image: url('../image/maillistbutton1.gif');
+    vertical-align: middle;
+    text-align: center;
+}
+
+.Labels {
+    height: 24px;
+    width: 90px;
+    background-image: url('../image/maillistbutton2.gif');
+    vertical-align: middle;
+    text-align: center;
+}
+
+.frametr {
+    border: 1px solid #E8F4FF;
+    padding: 0px;
+    margin: 0px;
+    font-size: 9pt;
+    width: 100%;
+}
+/****************************/
+/*链接样式*/
+a {
+    FONT-SIZE: 9pt;
+    color: #006699;
+    text-decoration: none;
+}
+
+    a:active {
+        color: #006699;
+        text-decoration: none;
+    }
+
+    a:focus {
+        color: black;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ff4500;
+        text-decoration: none;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+/****************************/
+
+
+
+/*红色按钮样式*/
+.redButtonCss {
+    font-family: "Tahoma", "宋体";
+    FONT-SIZE: 9pt;
+    color: #0066cc;
+    border: 1px solid #93bee2;
+    background-image: url('../image/redbuttonbg.gif');
+    background-color: #ffffff;
+    CURSOR: hand;
+    font-style: normal;
+    width: 79px;
+    height: 20px;
+}
+/*绿色按钮样式*/
+.greenButtonCss {
+    FONT-SIZE: 9pt;
+    color: #0066cc;
+    border: 1px solid #93bee2;
+    background-image: url('../image/greenbuttonbg.gif');
+    background-color: #ffffff;
+    CURSOR: hand;
+    font-style: normal;
+}
+/*按钮样式*/
+.ButtonCss {
+    font-family: "Tahoma", "宋体";
+    FONT-SIZE: 9pt;
+    color: #003399;
+    border: 1px solid #93bee2;
+    color: #006699;
+    background-image: url('../image/bluebuttonbg.gif');
+    background-color: #e8f4ff;
+    CURSOR: hand;
+    font-style: normal;
+    width: 82px;
+}
+.ButtonCss2 {
+    font-family: "Tahoma", "宋体";
+    FONT-SIZE: 9pt;
+    color: white;
+    border: 1px solid #93bee2;
+    color: #006699;
+    background-color: #FFF211;
+    CURSOR: hand;
+    font-style: normal;
+    width: 82px;
+}
+.ButtonCss3 {
+    font-family: "Tahoma", "宋体";
+    FONT-SIZE: 9pt;
+    color: #003399;
+    border: 1px solid #93bee2;
+    color: #006699;
+    background-image: url('../image/bluebuttonbg.gif');
+    background-color: #e8f4ff;
+    CURSOR: hand;
+    font-style: normal;
+    width: 82px;
+    height:22px;
+}

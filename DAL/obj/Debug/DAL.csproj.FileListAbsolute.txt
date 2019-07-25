@@ -1,0 +1,9 @@
+D:\LCTest\Code\Monitor\DAL\bin\Debug\DAL.dll
+D:\LCTest\Code\Monitor\DAL\bin\Debug\DAL.pdb
+D:\LCTest\Code\Monitor\DAL\obj\Debug\DAL.dll
+D:\LCTest\Code\Monitor\DAL\obj\Debug\DAL.pdb
+D:\LCTest\Code\Monitor\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\LCTest\Code\Monitor\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\LCTest\Code\Monitor\DAL\bin\Debug\Tool.dll
+D:\LCTest\Code\Monitor\DAL\bin\Debug\Tool.pdb
+D:\LCTest\Code\Monitor\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

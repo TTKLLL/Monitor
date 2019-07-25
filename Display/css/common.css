@@ -1,0 +1,38 @@
+﻿.targeBtn, .targeBtn:visited {
+    margin-left: 10px;
+    height: 25px;
+    width: 70px;
+    background-color: #A1BFE1;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 25px;
+    border: 1px solid #A1BFE1;
+    border-radius: 0.2em;
+    color: white;
+}
+
+    .targeBtn:active {
+        color: red;
+    }
+
+    .targeBtn:hover {
+        text-decoration: underline;
+    }
+
+.selected {
+    background-color: #29709A !important;
+}
+
+.gridviewItem {
+    height: 30px;
+    font-size: 16px;
+}
+
+/*#topTitle {
+    padding-top: 5px;
+    padding-left: 3px;
+    font-size: 16px !important;
+    background-image: url('../image/treetopbg.jpg');
+    height: 30px;
+}*/

@@ -1,0 +1,13 @@
+D:\LCTest\Code\Monitor\DisplayBLL\obj\Debug\DisplayBLL.csprojAssemblyReference.cache
+D:\LCTest\Code\Monitor\DisplayBLL\obj\Debug\DisplayBLL.csproj.CoreCompileInputs.cache
+D:\LCTest\Code\Monitor\DisplayBLL\bin\Debug\DisplayBLL.dll
+D:\LCTest\Code\Monitor\DisplayBLL\bin\Debug\DisplayBLL.pdb
+D:\LCTest\Code\Monitor\DisplayBLL\bin\Debug\DAL.dll
+D:\LCTest\Code\Monitor\DisplayBLL\bin\Debug\Model.dll
+D:\LCTest\Code\Monitor\DisplayBLL\bin\Debug\Tool.dll
+D:\LCTest\Code\Monitor\DisplayBLL\bin\Debug\DAL.pdb
+D:\LCTest\Code\Monitor\DisplayBLL\bin\Debug\Model.pdb
+D:\LCTest\Code\Monitor\DisplayBLL\bin\Debug\Tool.pdb
+D:\LCTest\Code\Monitor\DisplayBLL\obj\Debug\DisplayBLL.csproj.CopyComplete
+D:\LCTest\Code\Monitor\DisplayBLL\obj\Debug\DisplayBLL.dll
+D:\LCTest\Code\Monitor\DisplayBLL\obj\Debug\DisplayBLL.pdb

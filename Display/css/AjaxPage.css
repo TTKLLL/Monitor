@@ -1,0 +1,21 @@
+﻿
+ ul#page  li {
+     font-size: 15px;
+     border: 1px solid  #DDDDDD;
+     padding: 8px;
+     padding-left:12px;
+     padding-right: 12px;
+     color:#52BBED;
+     cursor:pointer;
+}
+
+  ul#page  li.active{
+      color:red;
+      background-color:#87CEEB;
+
+  }
+
+    ul#page li.disabled {
+        pointer-events:none;
+        color:#C1B8CB;
+    }

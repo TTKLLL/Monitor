@@ -1,0 +1,6 @@
+D:\LCTest\Code\Monitor\Tool\bin\Debug\Tool.dll
+D:\LCTest\Code\Monitor\Tool\bin\Debug\Tool.pdb
+D:\LCTest\Code\Monitor\Tool\obj\Debug\Tool.csproj.CoreCompileInputs.cache
+D:\LCTest\Code\Monitor\Tool\obj\Debug\Tool.dll
+D:\LCTest\Code\Monitor\Tool\obj\Debug\Tool.pdb
+D:\LCTest\Code\Monitor\Tool\obj\Debug\Tool.csprojAssemblyReference.cache

@@ -1,0 +1,119 @@
+﻿/*老师界面样式表*/
+
+* {
+    margin:0;
+    padding:0;
+}
+a {
+    text-decoration:none;
+}
+    a:hover {
+        text-decoration:underline;
+    }
+
+.linkButton {
+    border:1px #93BEE2 inherit;
+    padding:6px;
+    background-color:#EAEEF9;
+    border-radius:0.5em;
+
+}
+body {
+    font-size:10px;
+}
+
+#topTitle {/*网页顶部标题*/
+    background-image:url("../Image/treetopbg.jpg");
+    height:30px;
+    color:#003366;
+    font-size:10px;
+    margin-bottom:10px;
+}
+    #topTitle p {
+        padding-top:8px;
+        padding-left:15px;
+    }
+#detail ul {/*网页跳转链接*/
+    margin-top:10px;
+    margin-bottom:10px;
+}
+#detail li {
+    width:90px;
+    float:left;
+    list-style:none;
+    height:20px;
+}
+    #detail li a {
+        display:block;
+        text-align:center;
+        line-height:20px;
+        background-color:#004387;
+        color:white;
+        font-size:10px;
+        text-decoration:none;
+        border:1px solid #004387;
+        border-top-left-radius:0.7em;
+        border-top-right-radius:0.7em;
+    }
+        #detail li a:hover {
+            color:yellow;
+        }
+#titleList {/*显示题目信息*/
+    margin:10px;
+    height:1500px;
+}
+    #titleList table{
+        border:1px solid #93BEE2;
+        margin-bottom:5px;
+        width:800px;
+        font-size:10px;
+        border-collapse:collapse;
+    }
+    .title {
+        border:1px solid #93BEE2;
+        /*margin-bottom:5px;*/
+        width:100%;
+        font-size:10px;
+        border-collapse:collapse;
+
+    }
+        #titleList table tr, .title tr {
+            height:30px;
+        }
+        #titleList table td {
+            padding-left:5px;
+        }
+
+    #titleList #content { /*显示题目内容的repeater*/
+        margin-top:10px;
+    }
+.addTitle, .allPaper {/*添加题目的表格*/
+    width:100%;
+    margin-top:10px;
+    color:#006699;
+    border-collapse:collapse;
+}
+    .addTitle tr, .allPaper {
+        border:1px solid #93BEE2;
+    }
+    .addTitle td, .allPaper {
+        height:25px;
+        border:1px solid #93BEE2;
+    }
+    .addTitle tr:nth-child(even) .allPaper {/*隔行换色*/
+        background-color: #f5fafe;
+    }
+    .addTitle tr td:first-child, .addTitle tr td:first-child{
+        width:290px;
+        text-align:right;
+}
+
+    /*试卷细节样式*/
+.paperDetail {
+    width:100%;
+    margin-top:10px;
+}
+.paperDetail_Header {
+    text-align:left;
+    font-size:16px;
+}
