@@ -98,7 +98,7 @@ namespace Tool
                     ReLoadLog();
 
                 string info = DateTime.Now.ToLocalTime() + ": " + str;
-                using (FileStream fs = new FileStream(LogDir, FileMode.Append))
+                using (FileStream fs = new FileStream(LogDir, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
                 {
                     StreamWriter sw = new StreamWriter(fs);
                     sw.BaseStream.Seek(0, SeekOrigin.End);

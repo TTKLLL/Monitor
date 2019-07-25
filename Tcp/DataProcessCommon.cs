@@ -13,12 +13,6 @@ namespace Tcp
     //在处理接收数据时要用的的公共方法
     public class DataProcessCommon
     {
-        public DataProcessCommon()
-        {
-            //给TcpServer额事件添加行为
-            TcpServer.ProcessDataEvent += new TcpServer.ProcessData(ProcessData);
-        }
-
         //根据端口号获取项目编号
         public string GetXmno(int port)
         {

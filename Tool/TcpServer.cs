@@ -13,6 +13,8 @@ namespace Tool
     /// 给ProcessDataEvent事件添加行为来处理接收的数据
     /// </summary>
 
+
+
     public class StateObject
     {
         public Socket workSocket = null;
@@ -22,6 +24,7 @@ namespace Tool
         public StringBuilder sb = new StringBuilder();
     }
 
+
     public class TcpServer
     {
         //声明一个用于处理收到的数据的委托
@@ -30,7 +33,6 @@ namespace Tool
         public static event ProcessData ProcessDataEvent;
 
         //  private string ip; // = "192.168.168.96";
-
         //本地测试监测ip
         //发布使用ip
         //172.18.55.16
@@ -164,7 +166,7 @@ namespace Tool
         }
 
         //开启端口
-        public static bool StartListenPoret(string ip, int port)
+        public static bool StartListenPort(string ip, int port)
         {
             try
             {

@@ -4,6 +4,8 @@ using System;
 using System.Web;
 using Tcp;
 using System.Threading;
+using Tool;
+using DisplayBLL;
 
 /// <summary>
 /// 打开和关闭端口
@@ -20,8 +22,11 @@ public class PortManage : IHttpHandler
 
             if (state == 1)
             {
-                Thread thread1 = new Thread(() => TcpServer.StartListening(port));
-                thread1.Start();
+                //string ip = new TcpBLL().GetIp();
+                //Thread thread1 = new Thread(() => TcpServer.StartListening(ip, port));
+                //thread1.Start();
+                TcpBLL bll = new TcpBLL();
+                bll.StartTcpListen(port);
                 context.Response.Write("True");
             }
         }

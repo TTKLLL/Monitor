@@ -80,7 +80,6 @@ namespace Tcp
 
                     //获取点名
                     //model.pointName = dataProcessCommon.GetPointName(model.sno, model.tdno);
-
                 }
                 #endregion
 

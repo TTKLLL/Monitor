@@ -1,4 +1,5 @@
 ﻿using System;
+using Tcp;
 using Tool;
 
 namespace WF
@@ -7,11 +8,16 @@ namespace WF
     {
         public Form1()
         {
+            CheckForIllegalCrossThreadCalls = false;
             //给FileOpetion的event添加方法
             //当向日志中写入数据时 触发事件将该数据添加到窗口上
             FileOperation.Send += new FileOperation.SendLog(AppendLog);
             //当清空了日志后 窗口重新加载日志
             FileOperation.ReLoadLog += new FileOperation.ReLoadLogDele(GetLog);
+
+            ////给Tcp的处理数据事件添加行为
+            TcpServer.ProcessDataEvent += new TcpServer.ProcessData(new DataProcessCommon().ProcessData);
+
             InitializeComponent();
         }
 
@@ -42,14 +48,15 @@ namespace WF
             int line = int.Parse(comboBox1.Text);
             //获取日志的后line行记录
             richTextBox1.Text = FileOperation.ReadLastLine(line);
-            richTextBox1.SelectionStart = richTextBox1.TextLength;
+            //文本框滚动条在底部
+            richTextBox1.ScrollToCaret();
             richTextBox1.ReadOnly = true;
         }
 
         //当有新日志插入时 让滚动条自动到底部
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            richTextBox1.SelectionStart = richTextBox1.TextLength;
+            richTextBox1.ScrollToCaret();
         }
 
         //打开端口设置窗口

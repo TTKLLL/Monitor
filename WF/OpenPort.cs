@@ -4,21 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Tcp;
 using Tool;
 
 namespace WF
 {
     public partial class OpenPort : BaseForm
     {
-        public static readonly string IP;
-
-        //初始化ip
-        static OpenPort()
-        {
-            TcpBLL bll = new TcpBLL();
-            IP = bll.GetIp();
-        }
+        TcpBLL tcpBll = new TcpBLL();
 
         public OpenPort()
         {
@@ -38,12 +30,12 @@ namespace WF
         }
 
         //初始化数据
-        public  void Initial()
+        public void Initial()
         {
             //绑定端口信息
             GetPorts();
             //检查端口的开启状态
-            TestPort();
+            // TestPort();
         }
 
         //获取所有端口信息
@@ -69,29 +61,6 @@ namespace WF
             dataGridView1.Columns[1].ReadOnly = true;
 
         }
-
-        ////点击复选框开启端口
-        //private void checkBox_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    CheckBox box = (CheckBox)sender;
-        //    CheckState state = box.CheckState;
-        //    int port = int.Parse(box.Text);
-        //    try
-        //    {
-        //        if (TcpServer.StartListenPoret(IP, port))
-        //        { 
-        //            MessageBox.Show("成功开启端口" + port.ToString());
-        //          //  Send("成功开启端口" + port.ToString());
-        //        }
-                    
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        FileOperation.WriteAppenFile(string.Format("开启端口{0}出错，{1}", port.ToString(), ex.Message));
-        //        MessageBox.Show("开启端口" + port.ToString() + "失败");
-        //        box.CheckState = CheckState.Unchecked;
-        //    }
-        //}
 
         //修改表格内容
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -149,7 +118,7 @@ namespace WF
                 int port = int.Parse(GetPort(rowIndex));
                 try
                 {
-                    if (TcpServer.StartListenPoret(IP, port))
+                    if (tcpBll.StartTcpListen(port))
                     {
                         Show("成功开启" + port.ToString() + "端口");
                         SetCheck(rowIndex, true);
