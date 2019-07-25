@@ -1,14 +1,18 @@
-﻿using DisplayBLL;
+﻿
 using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using Tool;
 
-//namespace Tcp
-namespace Test
+namespace Tool
 {
+    /// <summary>
+    /// 提供Scoket服务
+    /// 提供ip 端口 来开启指定端口的监听
+    /// 给ProcessDataEvent事件添加行为来处理接收的数据
+    /// </summary>
+
     public class StateObject
     {
         public Socket workSocket = null;
@@ -20,6 +24,11 @@ namespace Test
 
     public class TcpServer
     {
+        //声明一个用于处理收到的数据的委托
+        public delegate void ProcessData(string data, int port);
+        //用委托实例化事件
+        public static event ProcessData ProcessDataEvent;
+
         //  private string ip; // = "192.168.168.96";
 
         //本地测试监测ip
@@ -30,13 +39,11 @@ namespace Test
         //此时的falseb表明WaitOne()阻塞进程
         public static ManualResetEvent allDone = new ManualResetEvent(false);
 
-        public static void StartListening(int port)
+        public static void StartListening(string ip, int port)
         {
             try
             {
                 byte[] bytes = new Byte[1024];
-                TcpBLL bll = new TcpBLL();
-                string ip = bll.GetIp();
                 IPAddress ipAddress = IPAddress.Parse(ip);
                 IPEndPoint localEndPoint = new IPEndPoint(ipAddress, port);
 
@@ -63,7 +70,6 @@ namespace Test
                 string info = e.Message;
                 FileOperation.WriteAppenFile("1" + info);
             }
-
             Console.Read();
         }
 
@@ -111,9 +117,13 @@ namespace Test
                     content = state.sb.ToString();
                     //  Send(handler, "recive success");
 
-                    DataProcessCommon dataProcessCommon = new DataProcessCommon();
-                    //处理接收的数据
-                    dataProcessCommon.ProcessData(data, handler.LocalEndPoint.ToString().Split(':')[1]);
+                    string port = handler.LocalEndPoint.ToString().Split(':')[1];
+                    //DataProcessCommon dataProcessCommon = new DataProcessCommon();
+                    ////处理接收的数据
+                    //dataProcessCommon.ProcessData(data, port);
+
+                    //调用事件来处理收到的数据
+                    ProcessDataEvent(data, int.Parse(port));
 
                     //继续监听
                     handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
@@ -154,11 +164,11 @@ namespace Test
         }
 
         //开启端口
-        public static bool StartListenPoret(int port)
+        public static bool StartListenPoret(string ip, int port)
         {
             try
             {
-                Thread thread1 = new Thread(() => TcpServer.StartListening(port));
+                Thread thread1 = new Thread(() => TcpServer.StartListening(ip, port));
                 thread1.Start();
                 return true;
             }

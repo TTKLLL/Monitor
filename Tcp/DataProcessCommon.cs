@@ -13,6 +13,12 @@ namespace Tcp
     //在处理接收数据时要用的的公共方法
     public class DataProcessCommon
     {
+        public DataProcessCommon()
+        {
+            //给TcpServer额事件添加行为
+            TcpServer.ProcessDataEvent += new TcpServer.ProcessData(ProcessData);
+        }
+
         //根据端口号获取项目编号
         public string GetXmno(int port)
         {
@@ -148,7 +154,7 @@ where id = pointid and sno = '{0}' and point.tdno = '{1}'", sno, tdno);
         /// </summary>
         /// <param name="data"></param>
         /// <param name="port"></param>
-        public void ProcessData(string data, string port)
+        public void ProcessData(string data, int port)
         {
             // string dataType;
             // int xmno;
@@ -159,7 +165,7 @@ where id = pointid and sno = '{0}' and point.tdno = '{1}'", sno, tdno);
             //IDataProcess process = FactoryObject.GetDataProcess(data, out dataType);
 
             IDataProcess process = new DataProcessZX();
-            process.AnalysisData(data, port, null);
+            process.AnalysisData(data, port.ToString(), null);
         }
 
         public void ShowDataInfo(List<Model> models)
@@ -224,7 +230,7 @@ where id = pointid and sno = '{0}' and point.tdno = '{1}'", sno, tdno);
             }
         }
     }
-  
+
 }
 
 
