@@ -136,7 +136,6 @@ namespace Tcp
                 FileOperation.WriteAppenFile(string.Format("计算{0}类型的数据出错，{1}", dataType, ex.Message));
                 return null;
             }
-
         }
 
         //计算数据

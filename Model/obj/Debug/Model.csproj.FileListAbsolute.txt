@@ -3,3 +3,4 @@ D:\LCTest\Code\Monitor\Model\bin\Debug\Model.pdb
 D:\LCTest\Code\Monitor\Model\obj\Debug\Model.dll
 D:\LCTest\Code\Monitor\Model\obj\Debug\Model.pdb
 D:\LCTest\Code\Monitor\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\LCTest\Code\Monitor\Model\obj\Debug\Model.csprojAssemblyReference.cache

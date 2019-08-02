@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using Tool;
 
 namespace DisplayBLL
@@ -13,17 +14,56 @@ namespace DisplayBLL
     /// </summary>
     public class DeviceBLL
     {
-        //根据类别获取传感器数据
-        public List<Device> GetDevices(string dataType = "")
+        MKBLL mkBll = new MKBLL();
+                //根据类别获取传感器数据
+        public List<DeviceVM> GetDevices(string dataType = "")
         {
             try
             {
-                string sql = string.Format("select * from device where type like '%{0}%' order by deviceId ", dataType);
-                return SqlHelper.GetList<Device>(sql);
+                string firstSql = "select distinct device.*, mkno, pointName from device left join td on device.deviceId = td.deviceId";
+                DataTable dt = SqlHelper.GetTable(firstSql);
+                List<DeviceVM> devices = new List<DeviceVM>();
+                if (dt.Rows.Count == 0)
+                    return null;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DeviceVM model = new DeviceVM()
+                    {
+                        deviceId = dt.Rows[i]["deviceId"].ToString(),
+                        deviceInfo = dt.Rows[i]["deviceInfo"].ToString(),
+                        company = dt.Rows[i]["company"].ToString(),
+                        type = dt.Rows[i]["type"].ToString(),
+                        mkno = dt.Rows[i]["mkno"].ToString(),
+                        pointName = dt.Rows[i]["pointName"].ToString()
+                    };
+
+                    StringBuilder builder = new StringBuilder();
+                    //获取该传感器的通道列表
+                    string sql = string.Format("select  tdno from device left join td  on device.deviceId = td.deviceId " +
+                        " where device.deviceId = '{0}' order by tdno", model.deviceId);
+                    DataTable theDt = SqlHelper.GetTable(sql);
+                    if (theDt.Rows.Count == 0)
+                        builder.Append("");
+                    else
+                    {
+                        for (int j = 0; j < theDt.Rows.Count; j++)
+                            builder.Append(theDt.Rows[j]["tdno"].ToString() + " ");
+                    }
+                    model.tdnos = builder.ToString();
+
+                    //获取项目编号
+                    model.xmno = GetXmnoByMkno(model.mkno).ToString();
+                    //通过模块号得到端口号
+                    model.port = mkBll.GetPortBymkno(model.mkno);
+
+                    devices.Add(model);
+                }
+
+                return devices;
             }
             catch (Exception ex)
             {
-                FileOperation.WriteAppenFile("获取传感器数据失败");
+                FileOperation.WriteAppenFile("获取传感器设备信息失败");
                 throw ex;
             }
         }
@@ -142,6 +182,22 @@ namespace DisplayBLL
             catch (Exception ex)
             {
                 FileOperation.WriteAppenFile("获取编号为" + deviceId + "的传感器出错");
+                throw ex;
+            }
+        }
+
+        //通过模块号得到项目编号
+        public int GetXmnoByMkno(string mkno)
+        {
+            try
+            {
+                string sql = string.Format("select xmno from xmport, module where xmport.port = module.port and mkno = '{0}'", mkno);
+                return int.Parse(SqlHelper.GetTable(sql).Rows[0]["xmno"].ToString());
+
+            }
+            catch (Exception ex)
+            {
+                FileOperation.WriteAppenFile("获取模块号为" + mkno + "对用的项目编号出错 " + ex.Message);
                 throw ex;
             }
         }

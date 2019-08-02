@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using DisplayBLL;
+using System;
 using System.Windows.Forms;
-using Model;
-using DisplayBLL;
 
 namespace WF
 {
     public partial class DeviceSetting : BaseForm
     {
-        private static DeviceBLL deviceBll = new DeviceBLL(); 
+        private static DeviceBLL deviceBll = new DeviceBLL();
         public DeviceSetting()
         {
             InitializeComponent();
@@ -21,13 +14,28 @@ namespace WF
 
         public void Initial()
         {
-           dataGridView1.DataSource = deviceBll.GetDevices();
-            dataGridView1.Columns[0].HeaderText = "传感器编号";
-            dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.DataSource = deviceBll.GetDevices();
 
+            dataGridView1.Columns[0].DataPropertyName = "deviceId";
+            dataGridView1.Columns[0].HeaderText = "传感器编号";
+            dataGridView1.Columns[1].DataPropertyName = "type";
             dataGridView1.Columns[1].HeaderText = "传感器类型";
+            dataGridView1.Columns[2].DataPropertyName = "company";
             dataGridView1.Columns[2].HeaderText = "生产厂商";
+            dataGridView1.Columns[3].DataPropertyName = "deviceinfo";
             dataGridView1.Columns[3].HeaderText = "传感器信息";
+
+            dataGridView1.Columns[4].DataPropertyName = "mkno";
+            dataGridView1.Columns[4].HeaderText = "模块编号";
+            dataGridView1.Columns[5].DataPropertyName = "tdnos";
+            dataGridView1.Columns[5].HeaderText = "通道号";
+            dataGridView1.Columns[6].DataPropertyName = "pointName";
+            dataGridView1.Columns[6].HeaderText = "点名";
+            dataGridView1.Columns[7].DataPropertyName = "port";
+            dataGridView1.Columns[7].HeaderText = "端口";
+            dataGridView1.Columns[8].DataPropertyName = "xmno";
+            dataGridView1.Columns[8].HeaderText = "项目编号";
+
         }
 
         private void DeviceSetting_Load(object sender, EventArgs e)

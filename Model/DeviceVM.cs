@@ -5,5 +5,10 @@
     /// </summary>
     public class DeviceVM : Device
     {
+        public string mkno { set; get; }
+        public string tdnos { set; get; }
+        public string pointName { set; get; }
+        public string xmno { set; get; }
+        public string port { set; get; }
     }
 }

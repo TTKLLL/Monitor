@@ -167,6 +167,27 @@ namespace DisplayBLL
                 throw ex;
             }
         }
-    }
 
+        //通过模块号得到端口号
+        public string GetPortBymkno(string mkno)
+        {
+            try
+            {
+                string port;
+                string sql = string.Format("select port from module where mkno = '{0}' ", mkno);
+                DataTable dt = SqlHelper.GetTable(sql);
+                if (dt.Rows.Count == 0)
+                    port = "";
+                else
+                    port = dt.Rows[0]["port"].ToString();
+                return port;
+            }
+            catch (Exception ex)
+            {
+                FileOperation.WriteAppenFile("获取通信模块" + mkno + "的端口信息出错 " + ex.Message);
+                throw ex;
+            }
+        }
+
+    }
 }
