@@ -117,7 +117,7 @@ namespace Tcp
                 foreach (var item in models)
                 {
                     //获取点名
-                    item.pointName = common.GetPointName(item.sno, item.tdno);
+                  //  item.pointName = common.GetPointName(item.sno, item.tdno);
                     string sql = string.Format("insert into data(sno, cycle, time, tdno, res, pointName, dy, port, dataType) values('{0}', '{1}', '{2}', '{3}', {4}, '{5}', {6}, {7}, '{8}')",
                         item.sno, item.cycle, item.time, item.tdno, item.res, item.pointName, item.dy, item.port, item.dataType);
                     OdbcCommand comm = new OdbcCommand(sql, conn);

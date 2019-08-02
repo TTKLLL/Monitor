@@ -41,10 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModel.cs" />
+    <Compile Include="DataVM.cs" />
     <Compile Include="Device.cs" />
+    <Compile Include="DeviceVM.cs" />
+    <Compile Include="MenueModel.cs" />
+    <Compile Include="ModuleModel.cs" />
     <Compile Include="PointInfo.cs" />
     <Compile Include="QueryModel.cs" />
     <Compile Include="TD.cs" />
+    <Compile Include="TDVM.cs" />
     <Compile Include="XmPortModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

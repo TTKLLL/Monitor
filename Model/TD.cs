@@ -11,7 +11,7 @@
         public string deviceId { set; get; }
         //模块编号
         public string mkno { set; get; }
-        //测点id
-        public string pointId { set; get; }
+        //点名
+        public string pointName { set; get; }
     }
 }

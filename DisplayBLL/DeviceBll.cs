@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Tool;
 
 namespace DisplayBLL
@@ -76,7 +77,7 @@ namespace DisplayBLL
                 string sql = string.Format("delete from device where deviceId = '{0}'", model.deviceId);
                 return SqlHelper.ExecuteNoQuery(sql);
             }
-           catch(Exception ex)
+            catch (Exception ex)
             {
                 FileOperation.WriteAppenFile(string.Format("删除编号为{0}的{1}传感器出错 {1}",
                     model.deviceId, model.type, ex.Message));
@@ -93,7 +94,7 @@ namespace DisplayBLL
                     model.deviceInfo, model.company, model.type, model.deviceId);
                 return SqlHelper.ExecuteNoQuery(sql);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 FileOperation.WriteAppenFile(string.Format("修改编号为{0}的{1}传感器出错 {1}",
                     model.deviceId, model.type, ex.Message));
@@ -109,9 +110,38 @@ namespace DisplayBLL
                 string sql = string.Format("select deviceId from device where deviceId = '{0}'", deviceId);
                 return SqlHelper.GetTable(sql).Rows.Count > 0 ? true : false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 FileOperation.WriteAppenFile(string.Format("判断编号为{0}的传感器是否存在出错", deviceId));
+                throw ex;
+            }
+        }
+
+        //获取未接入的传感器
+        public List<Device> GetUnUsedDevice()
+        {
+            try
+            {
+                string sql = string.Format("select * from device where deviceId not in (select deviceId from td)");
+                return SqlHelper.GetList<Device>(sql);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //根据传感器id获取传传感器信息
+        public Device GetDeviceById(string deviceId)
+        {
+            try
+            {
+                string sql = string.Format("select * from device where deviceId = '{0}'", deviceId);
+                return SqlHelper.GetList<Device>(sql).First();
+            }
+            catch (Exception ex)
+            {
+                FileOperation.WriteAppenFile("获取编号为" + deviceId + "的传感器出错");
                 throw ex;
             }
         }

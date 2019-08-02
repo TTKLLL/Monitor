@@ -13,8 +13,6 @@ namespace Tool
     /// 给ProcessDataEvent事件添加行为来处理接收的数据
     /// </summary>
 
-
-
     public class StateObject
     {
         public Socket workSocket = null;

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Tcp;
-using Tool;
 
 namespace WF
 {
@@ -18,11 +16,9 @@ namespace WF
             ////给Tcp的处理数据事件添加行为
             //TcpServer.ProcessDataEvent += new TcpServer.ProcessData(new DataProcessCommon().ProcessData);
             Form form = new Form1();
-        
+
+            //Form form = new TestMenue();
             Application.Run(form);
-
-           
-
         }
     }
 }

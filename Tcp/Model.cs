@@ -20,6 +20,8 @@ namespace Tcp
         //第几条记录
         public string number { get; set; }
         public string dataType { get; set; }
+        //模块号
+        public string mkno { set; get; }
 
         //最终的计算结果
         public double res { set; get; }

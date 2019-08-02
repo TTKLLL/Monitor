@@ -80,9 +80,28 @@ namespace DisplayBLL
         //}
 
 
+        /// <summary>
+        /// 判断点名是否已经被使用
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool PointBeUsed(PointInfo model)
+        {
+            try
+            {
+                string sql = string.Format("select tdno from td where pointName = '{0}' ", model.pointName);
+                return SqlHelper.GetTable(sql).Rows.Count > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                FileOperation.WriteAppenFile("判断点名为" + model.pointName + "的测点是否使用出错 " + ex.Message);
+                throw ex;
+            }
+        }
+
         //删除测点
         public bool DeletePoint(PointInfo model)
-        {
+        {  
             try
             {
                 string sql = string.Format("delete from pointinfo where pointName = '{0}' ", model.pointName);
@@ -108,12 +127,12 @@ namespace DisplayBLL
                 string sql = string.Format("select pointName from pointInfo where pointName = '{0}'", pointName);
                 return SqlHelper.GetTable(sql).Rows.Count > 0 ? true : false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 FileOperation.WriteAppenFile(string.Format("判断点名{0} 是否存在出错 {1}", pointName, ex.Message));
                 throw ex;
             }
-            
+
         }
     }
 }

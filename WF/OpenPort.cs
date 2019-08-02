@@ -14,6 +14,8 @@ namespace WF
 
         public OpenPort()
         {
+            //允许控件被其他线程访问
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
         }
 
@@ -26,6 +28,7 @@ namespace WF
 
         private void OpenPort_Load(object sender, EventArgs e)
         {
+           
             Initial();
         }
 
@@ -35,7 +38,7 @@ namespace WF
             //绑定端口信息
             GetPorts();
             //检查端口的开启状态
-            // TestPort();
+            AsyncTestPort();
         }
 
         //获取所有端口信息
@@ -166,11 +169,20 @@ namespace WF
             TestPort();
         }
 
+        void AsyncTestPort()
+        {
+            Action action = () => { TestPort(); };
+            action.BeginInvoke(null, null);
+        }
+
         //检测端口的开启状态
         void TestPort()
         {
             try
             {
+                if (dataGridView1.Rows.Count == 0)
+                    return;
+
                 button1.Enabled = false;
                 dataGridView1.Enabled = false;
 

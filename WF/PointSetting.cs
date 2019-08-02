@@ -30,7 +30,12 @@ namespace WF
             //  List<PointInfo> models = pointBll.GetPointInfos();
             List<PointVM> models = new List<PointVM>();
             int i = 0;
-            foreach (var item in pointBll.GetPointInfos())
+            var pointInfos = pointBll.GetPointInfos();
+
+            if (pointInfos == null)
+                return;
+
+            foreach (var item in pointInfos)
             {
                 PointVM model = new PointVM()
                 {
@@ -92,6 +97,13 @@ namespace WF
             {
                 pointName = pointName
             };
+
+            if(bll.PointBeUsed(model))
+            {
+                Show("测点正在使用，无法删除");
+                return;
+            }
+
             if (bll.DeletePoint(model))
             {
                 Initial();

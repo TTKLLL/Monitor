@@ -9,15 +9,9 @@ using Tool;
 
 namespace Tcp
 {
-
     //在处理接收数据时要用的的公共方法
     public class DataProcessCommon
     {
-        //根据端口号获取项目编号
-        public string GetXmno(int port)
-        {
-            return null;
-        }
 
         //根据端口号获取数据类型和项目编号
         public bool GetDataType(int port, out string dataType, out int xmno)
@@ -42,22 +36,40 @@ namespace Tcp
 
         }
 
-        //根据设备编号+通道号得到点名
-        public string GetPointName(string sno, string tdno)
+        //根据模块号+通道号得到点名和传感器编号
+        public void GetPointName(string mkno, string tdno, out string pointName, out string deviceId)
         {
-            string sql = string.Format(@"select pointname from point, pointInfo
-where id = pointid and sno = '{0}' and point.tdno = '{1}'", sno, tdno);
-
+            string sql = string.Format("select pointName, deviceId from td where tdno = '{0}' and  mkno = '{1}'",
+               tdno, mkno);
+            pointName = null;
+            deviceId = null;
             DataTable dt = SqlHelper.GetTable(sql);
             try
             {
-                return dt.Rows[0]["pointname"].ToString();
+                pointName = dt.Rows[0]["pointName"].ToString();
+                deviceId = dt.Rows[0]["deviceId"].ToString();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return null;
+                FileOperation.WriteAppenFile("获取模块号为" + mkno + " 通道号为" + tdno + "的监测设备信息出错 " + ex.Message);
+                throw ex;
             }
+        }
 
+        //通过模块号得到项目编号
+        public int GetXmnoByMkno(string mkno)
+        {
+            try
+            {
+                string sql = string.Format("select xmno from xmport, module where xmport.port = module.port and mkno = '{0}'", mkno);
+                return int.Parse(SqlHelper.GetTable(sql).Rows[0]["xmno"].ToString());
+
+            }
+            catch (Exception ex)
+            {
+                FileOperation.WriteAppenFile("获取模块号为" + mkno + "对用的项目编号出错 " + ex.Message);
+                throw ex;
+            }
         }
 
         //获取指定测点的t0
@@ -222,6 +234,17 @@ where id = pointid and sno = '{0}' and point.tdno = '{1}'", sno, tdno);
                 FileOperation.WriteAppenFile("提取通道号出错" + ex.Message);
                 return null;
             }
+        }
+
+        //去除通道号前面的0
+        public string GetStrWithout0(string str)
+        {
+            if (str.StartsWith("0"))
+            {
+                return GetStrWithout0(str.Substring(1));
+            }
+            else
+                return str;
         }
     }
 

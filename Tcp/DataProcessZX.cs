@@ -51,12 +51,11 @@ namespace Tcp
 
                     Model model = new Model()
                     {
-                        xmno = xmno,
-                        sno = fields[0].Substring(0, fields[0].Length - 1),
+                        mkno = fields[0].Substring(0, fields[0].Length - 1),
                         number = fields[1],
                         cycle = fields[2],
                         time = DateTime.Parse(fields[3] + " " + fields[4]),
-                        tdno = fields[5].Substring(2),
+                        tdno =  dataProcessCommon.GetStrWithout0(fields[5].Substring(2)),
                         valueOne = Double.Parse(fields[6]),
                         dy = Double.Parse(dy),
                         port = port,
@@ -76,10 +75,18 @@ namespace Tcp
                     //获取该条数据所属的传感器类型
                     item.dataType = dataProcessCommon.GetDeviceByTdno(item.tdno).type;
                     //计算数据
-                    item.res = dataProcessCommon.Calculate(item);
+                    item.valueOne = dataProcessCommon.Calculate(item);
 
-                    //获取点名
-                    //model.pointName = dataProcessCommon.GetPointName(model.sno, model.tdno);
+                    string deviceId, pointName;
+                    //获取点名和传感器编号
+                    dataProcessCommon.GetPointName(item.mkno, item.tdno, out pointName, out deviceId);
+
+                    if (xmno == 0)
+                        xmno = dataProcessCommon.GetXmnoByMkno(item.mkno);
+
+                    item.pointName = pointName;
+                    item.sno = deviceId;
+                    item.xmno = xmno;
                 }
                 #endregion
 
@@ -87,7 +94,6 @@ namespace Tcp
                 if (SaveData(models, 0))
                 {
                     string info = string.Format("成功保存来自端口{0}的数据", port);
-                    FileOperation.WriteAppenFile(info);
                     FileOperation.WriteAppenFile(info);
                     dataProcessCommon.ShowDataInfo(models);
                     return true;
@@ -115,8 +121,8 @@ namespace Tcp
             {
                 foreach (var item in models)
                 {
-                    string sql = string.Format("insert into data(sno, cycle, time, tdno, res, pointName, dy, port, number, dataType) values('{0}', '{1}', '{2}', '{3}', {4}, '{5}', {6}, {7}, {8}, '{9}')",
-                        item.sno, item.cycle, item.time, item.tdno, item.res, item.pointName, item.dy, item.port, item.number, item.dataType);
+                    string sql = string.Format("insert into data(sno, cycle, time, tdno, valueOne, pointName, dy, port, number, dataType, xmno) values('{0}', '{1}', '{2}', '{3}', {4}, '{5}', {6}, {7}, {8}, '{9}', {10})",
+                        item.sno, item.cycle, item.time, item.tdno, item.valueOne, item.pointName, item.dy, item.port, item.number, item.dataType, item.xmno);
                     OdbcCommand comm = new OdbcCommand(sql, conn);
                     comm.Transaction = trans;
                     if (comm.ExecuteNonQuery() <= 0)
@@ -133,17 +139,15 @@ namespace Tcp
             {
                 string info = string.Format("数据保存的数据库失败，" + ex.Message);
                 FileOperation.WriteAppenFile(info);
-                FileOperation.WriteAppenFile(info);
                 trans.Rollback();
                 return false;
             }
             finally
             {
                 trans.Dispose();
-               conn.Close();
+                conn.Close();
             }
         }
-
 
     }
 }

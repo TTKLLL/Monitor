@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBLL.cs" />
     <Compile Include="DataProcessBLL.cs" />
     <Compile Include="DeviceBLL.cs" />
+    <Compile Include="MenueBLL.cs" />
+    <Compile Include="MKBLL.cs" />
     <Compile Include="PointInfoBLL.cs" />
     <Compile Include="TcpBLL.cs" />
     <Compile Include="XmPortBLL.cs" />

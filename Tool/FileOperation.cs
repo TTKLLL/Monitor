@@ -103,8 +103,10 @@ namespace Tool
                     StreamWriter sw = new StreamWriter(fs);
                     sw.BaseStream.Seek(0, SeekOrigin.End);
                     sw.WriteLine(info);
+
                     //调用事件 向窗口写入最新的日志
-                    Send(info);
+                    if (Send != null)
+                        Send(info);
 
                     sw.Flush();
                     sw.Close();
